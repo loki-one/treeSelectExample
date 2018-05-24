@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Demo Tree Select</title>
+    <meta name="description" content="Example of tree select">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@0.0.28/dist/vue-treeselect.min.css">
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <style> [v-cloak] { display: none; } </style>
+  </head>
+  <body>
+    <section id="vueapp" class="container" v-cloak>
+      <header>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>{{ title }}</h2>
+          </div>
+        </div>
+      </header>
+      <section>
+        <div class="row">
+          <div class="col-md-12">
+            <treeselect v-model="value" :multiple="true" :options="options" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <pre class="result">{{ value }}</pre>
+          </div>
+        </div>
+      </section>
+    </section>
+    <script src="../vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@0.0.28/dist/vue-treeselect.min.js"></script>
+  </body>
+  <script>
+    (function(exports) {
+      'use strict';
+
+      Vue.component('treeselect', VueTreeselect.Treeselect)
+
+      exports.vueApp = new Vue({
+        el: '#vueapp',
+        data: function () {
+          return {
+            title: 'Tree Select Demo',
+            value: null,
+            options: [ {
+              id: 'Iron Man (CPC Avengers)',
+              label: 'Iron Man',
+              children: [ {
+                id: 'Thor (Avengers Core Asgard)',
+                label: 'Thor',
+                children: [ {
+                  id: 'Loki (Avengers Asgard)',
+                  label: 'Loki',
+                  children: [ {
+                    id: 'Groot (Guardians of Galaxy)',
+                    label: 'Groot'
+                  } ]
+                }, {
+                  id: 'Hela (Avengers Asgard)',
+                  label: 'Hela'
+                } ]
+              }, {
+                id: 'Captain America (Avengers Core Earth)',
+                label: 'Captain America',
+                children: [{
+                  id: 'Black Widow (Avengers Earth)',
+                  label: 'Black Widow'
+                }, {
+                  id: 'Hulk (Avengers Earth)',
+                  label: 'Hulk'
+                }]
+              } ],
+            }, {
+              id: 'Batman (CPC Marvel)',
+              label: 'Batman',
+            } ],
+          }
+        }
+      });
+
+    })(window);
+  </script>
+</html>
